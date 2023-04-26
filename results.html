@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Results</title>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			padding: 5px;
+		}
+	</style>
+</head>
+<body>
+	<h1>Search Results for "{{ query }}"</h1>
+	{% if results %}
+		<table>
+			<thead>
+				<tr>
+					<th>Handle</th>
+					<th>Roles</th>
+					<th>Person</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Phone</th>
+					<th>ASN</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for result in results %}
+					<tr>
+						<td>{{ result.handle }}</td>
+						<td>{{ result.roles }}</td>
+						<td>{{ result.person }}</td>
+						<td>{{ result['e-mail'] }}</td>
+						<td>{{ result.address }}</td>
+						<td>{{ result.phone }}</td>
+						<td>{{ result.asn }}</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>No results found.</p>
+	{% endif %}
+</body>
+</html>
+
